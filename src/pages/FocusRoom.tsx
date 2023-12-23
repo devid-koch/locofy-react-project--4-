@@ -1,6 +1,11 @@
 import { FunctionComponent, useState, useCallback } from "react";
+
+
 import Frame from "../components/Frame";
+
 import PortalPopup from "../components/PortalPopup";
+import CountdownTimer from "../components/Countdowntimer";
+import TakeNoteComponent from "../components/TakeNoteComponent";
 
 const FocusRoom: FunctionComponent = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
@@ -27,7 +32,7 @@ const FocusRoom: FunctionComponent = () => {
       <div className="relative bg-gray-100 w-full h-[2037px] overflow-y-auto text-center text-3xs text-white font-poppins">
         <div className="absolute top-[590px] right-[-345px] rounded-[50%] bg-gray-100 [filter:blur(250px)] box-border w-[537px] h-[537px] border-[69px] border-solid border-cornflowerblue" />
         <img
-          className="absolute top-[0px] left-[calc(50%_-_815px)] w-[1535px] h-[1024px] object-cover"
+          className="absolute top-[0px] left-[calc(50%_-_815px)] w-[100vw] h-[1024px] object-cover "
           alt=""
           src="/image-13@2x.png"
         />
@@ -95,22 +100,19 @@ const FocusRoom: FunctionComponent = () => {
             </div>
           </div>
           <div className="rounded-6xl [background:linear-gradient(270deg,_#010711,_#052554)] shadow-[2px_2px_10px_rgba(50,_183,_246,_0.25)_inset] overflow-hidden flex flex-col items-start justify-start pt-[18px] px-[25px] pb-[31px] gap-[15px] text-left text-sm border-[1px] border-solid border-dark-stroke">
-            <div className="relative w-[272px] h-6 text-base">
-              <img
-                className="absolute top-[4px] right-[264px] w-2 h-4 object-cover"
-                alt=""
-                src="/vector@2x.png"
-              />
-              <img
-                className="absolute top-[5px] left-[254px] w-[18px] h-[18px] object-cover cursor-pointer"
-                alt=""
-                src="/info@2x.png"
-                onClick={openFrame}
-              />
-              <div className="absolute top-[0px] left-[calc(50%_+_13.5px)] flex flex-row items-center justify-center gap-[10px] [transform:_rotate(180deg)] [transform-origin:0_0]">
-                <div className="relative font-medium [transform:_rotate(180deg)]">
+            <div className="flex w-[272px] text-base justify-between">
+              <div className="flex gap-3">
+                <div>
+                <i className="fa fa-angle-right text-xl font-bold" aria-hidden="true"></i>
+              </div>
+              <div>
+              <img src="./src/assets/Note.png" alt=""/>
+              </div>
+              <div className="relative font-medium">
                   Take Notes
-                </div>
+              </div>
+            </div>
+              <div className="absolute top-[0px] left-[calc(50%_+_13.5px)] flex flex-row items-center justify-center gap-[10px] [transform:_rotate(180deg)] [transform-origin:0_0]">
                 <img
                   className="relative w-[25px] h-[25px] overflow-hidden shrink-0 object-contain [transform:_rotate(-180deg)]"
                   alt=""
@@ -127,7 +129,7 @@ const FocusRoom: FunctionComponent = () => {
             <div className="relative rounded-xl bg-darkslateblue-500 shadow-[1px_0.5px_4px_rgba(1,_72,_183,_0.35)_inset] box-border w-[272px] h-[50px] overflow-hidden shrink-0 border-[1px] border-solid border-dark-stroke">
               <div className="absolute top-[15px] left-[20px] w-[89px] h-[21px]">
                 <div className="absolute top-[calc(50%_-_10.5px)] left-[0px]">
-                  New note
+                <input className= "text-[#ffffff] placeholder-white bg-[#0b316e] border-none outline-none bg-opacity-0 " type="text" placeholder="New Note" />
                 </div>
               </div>
               <img
@@ -166,34 +168,34 @@ const FocusRoom: FunctionComponent = () => {
               />
             </div>
           </div>
+          {/* <div className=""><TakeNoteComponent/></div> */}
         </div>
         <div className="absolute top-[125px] left-[115px] [filter:drop-shadow(-8px_-8px_50px_rgba(50,_183,_246,_0.05))_drop-shadow(8px_8px_50px_rgba(50,_183,_246,_0.05))_drop-shadow(-4px_-4px_25px_rgba(50,_183,_246,_0.15))_drop-shadow(4px_4px_25px_rgba(50,_183,_246,_0.15))_drop-shadow(0px_0px_57.46px_rgba(76,_125,_201,_0.25))_drop-shadow(0px_0px_32.83px_rgba(76,_125,_201,_0.25))] w-[795px] h-[495px] text-[31.28px]">
-          <div className="absolute right-[0px] bottom-[0px] w-[380px] h-[380px]">
-            <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] shadow-[-8px_-8px_50px_rgba(50,_183,_246,_0.05),_8px_8px_50px_rgba(50,_183,_246,_0.05),_-4px_-4px_25px_rgba(50,_183,_246,_0.15),_4px_4px_25px_rgba(50,_183,_246,_0.15),_0px_0px_57.46px_rgba(76,_125,_201,_0.25),_0px_0px_32.83px_rgba(76,_125,_201,_0.25)]">
-              <img
+        <b className="absolute top-[calc(50%_-_28.93px)] left-[calc(50%_-_86.79px)] text-[39.09px] text-left">
+                {/* 00:50:02 */}<CountdownTimer durationInSeconds={120} /> {/* Set your desired duration */}
+              </b>
+          
+              {/* <img
                 className="absolute top-[calc(50%_-_25px)] left-[375px] rounded-tl-none rounded-tr-3xs rounded-br-3xs rounded-bl-none w-10 h-[50px] overflow-hidden object-cover"
                 alt=""
                 src="/frame-761@2x.png"
-              />
-              <div className="absolute top-[calc(50%_-_190px)] left-[calc(50%_-_190px)] rounded-[50%] bg-gray-200 shadow-[15.637859344482422px_15.637859344482422px_78.19px_rgba(50,_183,_246,_0.25)_inset] [backdrop-filter:blur(10px)] box-border w-[380px] h-[380px] border-[7.8px] border-solid border-royalblue" />
-              <div className="absolute top-[94.61px] left-[calc(50%_-_74.09px)] font-medium">
+              /> */}
+              {/* <div className="absolute top-[calc(50%_-_190px)] left-[calc(50%_-_190px)] rounded-[50%] bg-gray-200 shadow-[15.637859344482422px_15.637859344482422px_78.19px_rgba(50,_183,_246,_0.25)_inset] [backdrop-filter:blur(10px)] box-border w-[380px] h-[380px] border-[7.8px] border-solid border-royalblue" /> */}
+              {/* <div className="absolute top-[94.61px] left-[calc(50%_-_74.09px)] font-medium">
                 Chapter 1
-              </div>
-              <b className="absolute top-[calc(50%_-_28.93px)] left-[calc(50%_-_86.79px)] text-[39.09px] text-left">
-                00:48:02
-              </b>
-              <img
+              </div> */}
+              
+              {/* <img
                 className="absolute h-[8.23%] w-[26.75%] top-[66.87%] right-[36.63%] bottom-[24.9%] left-[36.63%] max-w-full overflow-hidden max-h-full object-cover"
                 alt=""
                 src="/group-333@2x.png"
-              />
-              <img
+              /> */}
+              {/* <img
                 className="absolute h-[6.17%] w-[5.86%] top-[46.91%] right-[87.96%] bottom-[46.91%] left-[6.17%] max-w-full overflow-hidden max-h-full object-cover"
                 alt=""
                 src="/group@2x.png"
-              />
-            </div>
-          </div>
+              /> */}
+
         </div>
         <div className="absolute top-[446px] right-[1309px] rounded-[50%] bg-cornflowerblue [filter:blur(250px)] w-[399px] h-[399px]" />
         <div className="absolute top-[0px] left-[0px] [background:linear-gradient(177.47deg,_rgba(1,_7,_17,_0.5),_rgba(1,_7,_17,_0))] w-[115px] h-[1024px] text-left text-[20px]">
@@ -719,7 +721,7 @@ const FocusRoom: FunctionComponent = () => {
         </div>
       </div>
       {isFrameOpen && (
-        <PortalPopup
+        <PortalPopup    
           overlayColor="rgba(113, 113, 113, 0.3)"
           placement="Centered"
           onOutsideClick={closeFrame}
