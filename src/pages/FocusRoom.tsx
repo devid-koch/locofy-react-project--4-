@@ -7,6 +7,7 @@ import PortalPopup from "../components/PortalPopup";
 import CountdownTimer from "../components/Countdowntimer";
 import TakeNoteComponent from "../components/TakeNoteComponent";
 import TaskComponent from "../components/task";
+import Popup from "../components/popupnotes";
 
 const FocusRoom: FunctionComponent = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
@@ -183,10 +184,10 @@ const FocusRoom: FunctionComponent = () => {
           </b>
 
           {/* <img
-                className="absolute top-[calc(50%_-_25px)] left-[375px] rounded-tl-none rounded-tr-3xs rounded-br-3xs rounded-bl-none w-10 h-[50px] overflow-hidden object-cover"
-                alt=""
-                src="/frame-761@2x.png"
-              /> */}
+            className="absolute top-[calc(50%_-_25px)] left-[375px] rounded-tl-none rounded-tr-3xs rounded-br-3xs rounded-bl-none w-10 h-[50px] overflow-hidden object-cover"
+            alt=""
+            src="/frame-761@2x.png"
+          /> */}
           {/* <div className="absolute top-[calc(50%_-_190px)] left-[calc(50%_-_190px)] rounded-[50%] bg-gray-200 shadow-[15.637859344482422px_15.637859344482422px_78.19px_rgba(50,_183,_246,_0.25)_inset] [backdrop-filter:blur(10px)] box-border w-[380px] h-[380px] border-[7.8px] border-solid border-royalblue" /> */}
           {/* <div className="absolute top-[94.61px] left-[calc(50%_-_74.09px)] font-medium">
                 Chapter 1
@@ -263,6 +264,11 @@ const FocusRoom: FunctionComponent = () => {
             </div>
           </div>
         </div>
+        {isFrameOpen && (
+          <div onClick={() => setFrameOpen(!isFrameOpen)} className="absolute bottom-[20%] left-[15%] cursor-pointer z-50 shadow-[0px_3px_50px_rgba(1,_72,_183,_0.65)] rounded-[50px]">
+            <Popup />
+          </div>
+        )}
         <div
           className="absolute top-[1111px] left-[185px] w-[1070px] h-[730px] text-left text-17xl"
           data-scroll-to="component199Container"
@@ -270,12 +276,13 @@ const FocusRoom: FunctionComponent = () => {
           <div className="absolute top-[0px] left-[0px] font-semibold">
             All Notes
           </div>
-          <div className="absolute top-[54px] left-[0px] w-[1070px] flex flex-row flex-wrap items-start justify-start pt-[100px] px-0 pb-0 box-border gap-[85px] text-base">
+
+          <div className={`${isFrameOpen ? "hidden" : ""} absolute top-[54px] left-[0px] w-[1070px] flex flex-row flex-wrap items-start justify-start pt-[100px] px-0 pb-0 box-border gap-[85px] text-base`}>
             <div className="rounded-6xl bg-darkslateblue-400 shadow-[0px_3px_50px_rgba(1,_72,_183,_0.65)] box-border overflow-hidden flex flex-col items-start justify-start pt-2.5 px-[25px] pb-[25px] gap-[10px] max-h-[300px] z-[0] text-6xl border-[1px] border-solid border-darkgray">
               <div className="shrink-0 flex flex-col items-start justify-start gap-[15px]">
                 <div className="relative">Biology</div>
                 <div className="relative rounded-xl bg-darkslateblue-100 shadow-[1px_0.5px_4px_rgba(1,_72,_183,_0.35)_inset] box-border w-[250px] h-[50px] overflow-y-auto shrink-0 text-base border-[1px] border-solid border-darkgray">
-                  <div className="absolute top-[calc(50%_-_12px)] left-[16px]">
+                  <div onClick={() => setFrameOpen(!isFrameOpen)} className="absolute cursor-pointer top-[calc(50%_-_12px)] left-[16px]">
                     Cell structure
                   </div>
                   <img
@@ -727,15 +734,11 @@ const FocusRoom: FunctionComponent = () => {
           </div>
         </div>
       </div>
-      {isFrameOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeFrame}
-        >
-          {/* <Frame onClose={closeFrame} /> */}
-        </PortalPopup>
-      )}
+      {/* {isFrameOpen && (
+        <div className="absolute top-[54px] w-[1070px]">
+          <Popup />
+        </div>
+      )} */}
     </>
   );
 };

@@ -18,10 +18,10 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ durationInSeconds }) =>
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    let IntervalId:any;
+    let IntervalId: any;
 
     if (!isPaused) {
-       IntervalId = setInterval(() => {
+      IntervalId = setInterval(() => {
         setTimeRemaining((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
       }, 1000);
     }
@@ -47,8 +47,8 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ durationInSeconds }) =>
   };
 
 
-  const minimiseTimer =()=>{
-    return(
+  const minimiseTimer = () => {
+    return (
       <>
         <div className='flex justify-start'>
           <div className="timer2 absolute text-red-600 text-3xl ">{formatTime(timeRemaining)}</div>
@@ -61,27 +61,27 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ durationInSeconds }) =>
   }
 
   return (
-<div className='container'>
-  <div className='outerDivForBorderGradient'>
-    <div className="countdown-timer ">
-      <div className="circle" >
-        <div className='chapterName'>Chapter 1</div>
-    <div className="your-div-class text-white absolute top-[43%] left-[5%] text-[30px] hover:cursor-pointer" >
-      <FontAwesomeIcon icon={faCog}/>
-    </div>
-        <div className="timer">{formatTime(timeRemaining)}</div>
-        <button className="pause-play-button" onClick={handleTogglePause}>
-          {isPaused ? <FontAwesomeIcon icon={faPlay} /> : <FontAwesomeIcon icon={faPause} />}
-        </button>
-        
-      </div>
-      <div className='absolute left-[85%] sm:left-[60%] sm:top-[47%] '>
-            <img src="./src/assets/Frame 761.png" alt="" className='w-[100px]'/>
+    <div className='container'>
+      <div className='outerDivForBorderGradient'>
+        <div className="countdown-timer ">
+          <div className="circle">
+            <div className='chapterName'>Chapter 1</div>
+            <div className="your-div-class text-white absolute top-[43%] left-[5%] text-[30px] hover:cursor-pointer" >
+              <FontAwesomeIcon icon={faCog} />
+            </div>
+            <div className="timer">{formatTime(timeRemaining)}</div>
+            <button className="pause-play-button" onClick={handleTogglePause}>
+              {isPaused ? <FontAwesomeIcon icon={faPlay} /> : <FontAwesomeIcon icon={faPause} />}
+            </button>
+
+          </div>
+          <div className='absolute left-[85%] sm:left-[60%] sm:top-[47%] '>
+            <img src="./src/assets/Frame 761.png" alt="" className='w-[100px]' />
+          </div>
         </div>
+      </div>
+
     </div>
-  </div>
-     
-</div>
 
   );
 };
