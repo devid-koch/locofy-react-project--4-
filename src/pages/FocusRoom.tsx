@@ -7,6 +7,7 @@ import PortalPopup from "../components/PortalPopup";
 import CountdownTimer from "../components/Countdowntimer";
 import TakeNoteComponent from "../components/TakeNoteComponent";
 import TaskComponent from "../components/task";
+import FocusTimer from "../components/seting";
 
 const FocusRoom: FunctionComponent = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
@@ -181,7 +182,7 @@ const FocusRoom: FunctionComponent = () => {
           <b className="absolute top-[calc(50%_-_28.93px)] left-[calc(50%_-_86.79px)] text-[39.09px] text-left">
             {/* 00:50:02 */}<CountdownTimer durationInSeconds={120} /> {/* Set your desired duration */}
           </b>
-
+          {/* <FocusTimer /> */}
           {/* <img
                 className="absolute top-[calc(50%_-_25px)] left-[375px] rounded-tl-none rounded-tr-3xs rounded-br-3xs rounded-bl-none w-10 h-[50px] overflow-hidden object-cover"
                 alt=""
